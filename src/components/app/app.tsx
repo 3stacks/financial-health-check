@@ -5,7 +5,6 @@ import FrequencySelector, {
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import AppBar from '@material-ui/core/AppBar';
-import Card from "@material-ui/core/Card";
 import Section from "../section";
 
 interface IProps {
