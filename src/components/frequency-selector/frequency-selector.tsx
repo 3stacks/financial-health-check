@@ -1,10 +1,15 @@
-import * as React from 'react';
+import React from 'react';
+import Select from '@material-ui/core/Select';
+import Label from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
 
-enum FREQUENCIES {
+export enum FREQUENCIES {
 	DAILY = 'Daily',
 	WEEKLY = 'Weekly',
 	MONTHLY = 'Monthly',
-	ANNUALLY = 'Annually'
+	ANNUALLY = 'Annually',
 }
 
 const options = [
@@ -14,19 +19,33 @@ const options = [
 	FREQUENCIES.ANNUALLY,
 ];
 
-export default function FrequencySelector({onChange} : {onChange: (event: React.ChangeEvent) => void}) {
+interface IProps {
+	onChange?: (
+		event: React.ChangeEvent<{ name?: string; value: unknown }>,
+		child: React.ReactNode
+	) => void;
+	value: FREQUENCIES;
+	id: string;
+}
+
+export default function FrequencySelector({ value, onChange, id }: IProps) {
 	return (
-		<label>
-			Frequency
-			<select>
+		<FormControl component="div">
+			<Label>Frequency</Label>
+			<Select
+				input={<Input name="frequency" id={`frequency-${id}`} />}
+				value={value}
+				variant="outlined"
+				onChange={onChange}
+			>
 				{options.map(frequencyOption => {
 					return (
-						<option value={frequencyOption}>
+						<MenuItem value={frequencyOption}>
 							{frequencyOption}
-						</option>
-					)
+						</MenuItem>
+					);
 				})}
-			</select>
-		</label>
+			</Select>
+		</FormControl>
 	);
 }
