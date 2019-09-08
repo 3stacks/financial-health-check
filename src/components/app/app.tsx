@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import AppBar from '@material-ui/core/AppBar';
 import Card from "@material-ui/core/Card";
+import Section from "../section";
 
 interface IProps {
 	classes: { [key: string]: any };
@@ -44,27 +45,23 @@ export default class App extends React.Component<IProps, IState> {
 					</Typography>
 				</AppBar>
 				<div className="max-width-container">
-					<Card className={classes.section}>
-						<Typography component="h2" variant="h5">
-							Income
-						</Typography>
-						<TextField
-							label="Income"
-							value={this.state.income}
-							onChange={this.handleStateValueChangeRequested('income')}
-							className={classes.textField}
-						/>
-						<FrequencySelector
-							id="income"
-							value={this.state.incomeFrequency}
-							onChange={this.handleStateValueChangeRequested(
-								'incomeFrequency'
-							)}
-						/>
-					</Card>
-					<Typography component="h2" variant="h5">
-						Income
-					</Typography>
+					<Section title="Income">
+						<>
+							<TextField
+								label="Income"
+								value={this.state.income}
+								onChange={this.handleStateValueChangeRequested('income')}
+								className={classes.textField}
+							/>
+							<FrequencySelector
+								id="income"
+								value={this.state.incomeFrequency}
+								onChange={this.handleStateValueChangeRequested(
+									'incomeFrequency'
+								)}
+							/>
+						</>
+					</Section>
 				</div>
 			</Typography>
 		);
