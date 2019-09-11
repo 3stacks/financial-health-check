@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import AppBar from '@material-ui/core/AppBar';
 import Section from "../section";
+import LivingExpenses from "../living-expenses/living-expenses";
 
 interface IProps {
 	classes: { [key: string]: any };
@@ -60,6 +61,9 @@ export default class App extends React.Component<IProps, IState> {
 								)}
 							/>
 						</>
+					</Section>
+					<Section title="Living Expenses">
+						<LivingExpenses/>
 					</Section>
 				</div>
 			</Typography>
